@@ -22,13 +22,21 @@ class ProductSearch extends Component
     
     public function render()
     {
-        // Teste consultas ::: 
-        $products = Product::all();
+        $products = $this->getFilteredProducts();
 
         $categories = Category::all();
         $brands = Brand::all();
 
 
         return view('livewire.product-search', compact('products', 'categories', 'brands'));
+    }
+
+    private function getFilteredProducts()
+    {
+        $query = Product::query()
+            ->when($this->search, function ($query) {
+                $query->whereRaw('unaccent(lower(name)) ilike unaccent(lower(?))', ['%' . $this->search . '%']);
+            })
+            ->orderBy('name', 'asc');
     }
 }
