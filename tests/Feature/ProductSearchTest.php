@@ -28,4 +28,15 @@ class ProductSearchTest extends TestCase
             ->assertSee($category->name) 
             ->assertSee($brand->name);
     }
+
+    public function test_search_functionality()
+    {
+        $firstProduct = Product::factory()->create(['name' => 'Product A']);
+        $secondProduct = Product::factory()->create(['name' => 'Product B']);
+
+        Livewire::test(ProductSearch::class)
+            ->set('search', 'A') 
+            ->assertSee('Product A') 
+            ->assertDontSee('Product B'); 
+    }
 }
