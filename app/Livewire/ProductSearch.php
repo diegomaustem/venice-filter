@@ -27,16 +27,16 @@ class ProductSearch extends Component
         $categories = Category::all();
         $brands = Brand::all();
 
-
         return view('livewire.product-search', compact('products', 'categories', 'brands'));
     }
 
     private function getFilteredProducts()
     {
-        $query = Product::query()
-            ->when($this->search, function ($query) {
-                $query->whereRaw('unaccent(lower(name)) ilike unaccent(lower(?))', ['%' . $this->search . '%']);
-            })
-            ->orderBy('name', 'asc');
+        dd("Teste");
+    }
+
+    public function clearFilters()
+    {
+        $this->reset(['search', 'selectedCategory', 'selectedBrand']);
     }
 }
