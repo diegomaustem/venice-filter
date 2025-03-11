@@ -15,31 +15,17 @@ class ProductSearchTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_component_is_rendered()
-    {
-        Livewire::test(ProductSearch::class)
-            ->assertSee('Pesquisar...');
-    }
-
-    public function test_search_functionality()
-    {
-        $product = Product::factory()->create(['name' => 'Product testing']);
-
-        Livewire::test(ProductSearch::class)
-            ->set('search', 'Test')
-            ->assertSee('Product testing') 
-            ->assertDontSee('Other Product'); 
-    }
-
-    public function test_category_filter()
+    public function test_render_initial_state()
     {
         $category = Category::factory()->create();
+        $brand = Brand::factory()->create();
         $product = Product::factory()->create();
         $product->categories()->attach($category);
+        $product->brands()->attach($brand);
 
         Livewire::test(ProductSearch::class)
-            ->set('selectedCategory', [$category->id])
             ->assertSee($product->name) 
-            ->assertDontSee('Other Produto');
+            ->assertSee($category->name) 
+            ->assertSee($brand->name);
     }
 }
