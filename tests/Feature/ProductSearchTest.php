@@ -39,4 +39,19 @@ class ProductSearchTest extends TestCase
             ->assertSee('Product A') 
             ->assertDontSee('Product B'); 
     }
+
+    public function test_category_filter()
+    {
+        $firstCategory = Category::factory()->create();
+        $secondCategory = Category::factory()->create();
+        $firstProduct = Product::factory()->create();
+        $secondProduct = Product::factory()->create();
+        $firstProduct->categories()->attach($firstCategory);
+        $secondProduct->categories()->attach($secondCategory);
+
+        Livewire::test(ProductSearch::class)
+            ->set('selectedCategory', [$firstCategory->id])
+            ->assertSee($firstProduct->name) 
+            ->assertDontSee($secondProduct->name);
+    }
 }
