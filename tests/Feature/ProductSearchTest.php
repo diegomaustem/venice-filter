@@ -54,4 +54,19 @@ class ProductSearchTest extends TestCase
             ->assertSee($firstProduct->name) 
             ->assertDontSee($secondProduct->name);
     }
+
+    public function test_brand_filter()
+    {
+        $firstBrand = Brand::factory()->create();
+        $secondbrand = Brand::factory()->create();
+        $firstProduct = Product::factory()->create();
+        $secondProduct = Product::factory()->create();
+        $firstProduct->brands()->attach($firstBrand);
+        $secondProduct->brands()->attach($secondbrand);
+
+        Livewire::test(ProductSearch::class)
+            ->set('selectedBrand', [$firstBrand->id]) 
+            ->assertSee($firstProduct->name) 
+            ->assertDontSee($secondProduct->name); 
+    }
 }
