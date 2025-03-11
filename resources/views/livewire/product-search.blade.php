@@ -8,7 +8,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="input-group mb-5">
+                <div class="input-group mb-5" wire:ignore>
                     <input type="text" wire:model.live.debounce.500ms="search" class="form-control" placeholder="Pesquisar...">
 
                     <select class="selectpicker form-select" wire:model.live="selectedCategory" multiple data-live-search="true" title="Categorias">
@@ -22,7 +22,6 @@
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
                     </select>
-
                     <button class="btn btn-secondary" type="button" wire:click="clearFilters">
                         Limpar
                     </button>
@@ -64,11 +63,11 @@
                         </tbody>
                     </table>
                 @endif
-                <nav class="paginate">
+                <div class="paginate">
                     <ul class="pagination justify-content-center pagination-sm">
                       {{ $products->links() }}
                     </ul>
-                </nav>
+                </div>
             </div>
         </div>
     </div>
@@ -76,14 +75,12 @@
 
 @script('scripts')
 <script>
-
     $(document).ready(function() {
         $('.selectpicker').selectpicker('refresh');
     });
 
     Livewire.hook('morph.updated', ({ el, component }) => {
-        $('.selectpicker').selectpicker();
+        $('.selectpicker').selectpicker('refresh');
     })
-
 </script>
 @endscript
