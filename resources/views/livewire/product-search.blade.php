@@ -1,7 +1,7 @@
 <div>
-    <h1>Hi</h1>
-
-    <p>{{ $products }}</p>
-    <p>{{ $categories }}</p>
-    <p>{{ $brands }}</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Venice</a>
+        </div>
+    </nav>
 </div>
