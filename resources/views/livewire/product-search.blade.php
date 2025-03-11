@@ -63,14 +63,12 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-4">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center">
-                                {{-- {{ $products->links() }} --}}
-                            </ul>
-                        </nav>
-                    </div>
                 @endif
+                <nav class="paginate">
+                    <ul class="pagination justify-content-center pagination-sm">
+                      {{ $products->links() }}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

@@ -53,7 +53,7 @@ class ProductSearch extends Component
             });
         });
 
-        return $query->with(['categories', 'brands'])->get();
+        return $query->with(['categories', 'brands'])->paginate(2);
     }
 
     public function clearFilters()

@@ -22,6 +22,23 @@
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
+            .text-muted {
+                display: none;
+            }
+            .page-link {
+                color: #212529;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+            }
+            .page-link:hover {
+                color: #5A6268;
+            }
+            .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #5A6268;
+                border-color: #5A6268;
+            }
         </style>
     @livewireStyles
 
