@@ -7,39 +7,8 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">  
+        @vite('resources/css/styles.css')
         
-        <style>
-            body {
-                background-color: #F8F8FB;
-            }
-            .navbar {
-                background-color: #ffffff;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            .container {
-                background-color: #ffffff;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            .text-muted {
-                display: none;
-            }
-            .page-link {
-                color: #212529;
-                background-color: #fff;
-                border: 1px solid #dee2e6;
-            }
-            .page-link:hover {
-                color: #5A6268;
-            }
-            .page-item.active .page-link {
-                z-index: 3;
-                color: #fff;
-                background-color: #5A6268;
-                border-color: #5A6268;
-            }
-        </style>
     @livewireStyles
 
     </head>
