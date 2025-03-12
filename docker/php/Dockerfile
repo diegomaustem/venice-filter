@@ -16,7 +16,6 @@ RUN docker-php-ext-install pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
 RUN a2enmod rewrite
 
-# Instala o Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
@@ -30,9 +29,14 @@ RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 ENV COMPOSER_HOME=/var/www/.composer
 
+RUN mkdir -p /var/www/.composer && \
+    chown -R www-data:www-data /var/www/.composer && \
+    chmod -R 775 /var/www/.composer
+
+RUN composer clear-cache
+
 RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 80
 
-# Define o comando padrão para iniciar o Apache
 CMD ["apache2-foreground"]
