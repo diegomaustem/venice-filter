@@ -63,11 +63,7 @@
                         </tbody>
                     </table>
                 @endif
-                <div class="paginate">
-                    <ul class="pagination justify-content-center pagination-sm">
-                      {{ $products->links() }}
-                    </ul>
-                </div>
+                {{ $products->links('livewire::simple-bootstrap') }}
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 
 class ProductSearch extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithPagination;
 
     public $search = '';
     public array $selectedCategory = [];
@@ -22,7 +22,7 @@ class ProductSearch extends Component
         'selectedCategory' => ['except' => []],
         'selectedBrand' => ['except' => []],
     ];
-
+    
     public function render()
     {
         $products = $this->getFilteredProducts();
@@ -56,7 +56,7 @@ class ProductSearch extends Component
             });
         });
 
-        return $query->with(['categories', 'brands'])->paginate(3);
+        return $query->with(['categories', 'brands'])->paginate(5);
     }
 
     public function clearFilters()
